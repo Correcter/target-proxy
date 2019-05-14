@@ -1,0 +1,33 @@
+parameters:
+    api_users:
+        loreal: "%loreal_token%"
+        test_company: "%test_company_token%"
+        registratura-bigquery-stats: "%registratura_token%"
+        global: "%global_token%"
+
+security:
+    providers:
+        api_user_provider:
+            id: UserBundle\Security\ApiUserProvider
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            #pattern: ^/\b(?!agency|company|client|httpMethod|method|token)\b
+            pattern: ~
+            stateless: true
+            anonymous: ~
+            logout: ~
+            http_basic: ~
+            guard:
+                authenticators:
+                    - UserBundle\Security\TokenAuthenticator
+            provider: api_user_provider
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+          - { path: ^/oauth, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+          - { path: ^/callback, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+          - { path: ^/, roles: ROLE_API_USER }

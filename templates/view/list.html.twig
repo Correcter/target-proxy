@@ -1,0 +1,42 @@
+{% block list %}
+        {% include 'view/nav.html.twig' %}
+        {% if form is defined %}
+                <div class="to_common_list">
+                        <p><a href="{{ basePath }}"><< Назад к общему списку</a></p>
+                </div>
+                <div class="form-style-5">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+        {% endif %}
+
+        {% if data is defined and data|length > 0 %}
+                <div id="list">
+                    {% for item in data %}
+                        <div class="items">
+                                <div class="tooltip">
+                                        <a class="manage" href="{{ item.caption }}/manage/{{ item.id }}"><li>{{ item.title }}</li></a>
+                                        <a href="{{ item.caption }}/delete/{{ item.id }}">
+                                                <span class="tooltiptext"></span>
+                                        </a>
+                                </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="to_create">
+                        <p><a href="{{ basePath }}/create">Создать новую запись</a></p>
+                </div>
+        {% elseif toCreate is defined %}
+                <div class="to_create">
+                       <p><a href="{{ basePath }}/create"><< Создайте хотябы одну запись</a></p>
+                </div>
+        {% endif %}
+        {% if errors is defined and errors|length > 0 %}
+            <ul>
+                {% for error in errors %}
+                        <li>{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+{% endblock %}

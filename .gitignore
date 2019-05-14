@@ -1,0 +1,47 @@
+/tests/
+/.env.dist
+/.env
+/public/bundles/
+/var/
+/vendor/
+/public/images/
+/public/js/
+/public/assetic
+/public/assets
+/public/css
+/build/
+/phpunit.xml
+/var/*
+!/var/cache
+/var/cache/*
+!var/cache/.gitkeep
+!/var/logs
+/var/logs/*
+!var/logs/.gitkeep
+!/var/sessions
+/var/sessions/*
+!var/sessions/.gitkeep
+!var/SymfonyRequirements.php
+*.log
+*.lock
+/nbproject/*
+/.idea/
+/node_modules/*
+/.php_cs.cache
+/app/config/parameters.yml
+###> symfony/framework-bundle ###
+/.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> friendsofphp/php-cs-fixer ###
+/.php_cs
+/.php_cs.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> symfony/phpunit-bridge ###
+.phpunit
+/phpunit.xml
+###< symfony/phpunit-bridge ###

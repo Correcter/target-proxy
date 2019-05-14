@@ -1,0 +1,142 @@
+# ALL
+#company.all:
+#    path:     /company
+#    defaults: { _controller: TargetBundle:Company:company }
+#
+## CREATE
+#company.create:
+#    path:     /company/create
+#    defaults: { _controller: TargetBundle:Company:create }
+#
+## MANAGE
+#company.manage:
+#    path:     /company/manage/{companyId}
+#    defaults: { _controller: TargetBundle:Company:manage }
+#    requirements:
+#        companyId: \d+
+#
+## DELETE
+#company.delete:
+#    path:     /company/delete/{companyId}
+#    defaults: { _controller: TargetBundle:Company:delete }
+#    requirements:
+#        companyId: \d+
+#
+## ALL
+#agency.all:
+#    path:     /agency
+#    defaults: { _controller: TargetBundle:Agency:agency }
+#
+## CREATE
+#agency.create:
+#    path:     /agency/create
+#    defaults: { _controller: TargetBundle:Agency:create }
+#
+## MANAGE
+#agency.manage:
+#    path:     /agency/manage/{agencyId}
+#    defaults: { _controller: TargetBundle:Agency:manage }
+#    requirements:
+#        agencyId: \d+
+#
+## DELETE
+#agency.delete:
+#    path:     /agency/delete/{agencyId}
+#    defaults: { _controller: TargetBundle:Agency:delete }
+#    requirements:
+#        agencyId: \d+
+#
+## ALL
+#client.all:
+#    path:     /client
+#    defaults: { _controller: TargetBundle:Client:client }
+#
+## CREATE
+#client.create:
+#    path:     /client/create
+#    defaults: { _controller: TargetBundle:Client:create }
+#
+## MANAGE
+#client.manage:
+#    path:     /client/manage/{clientId}
+#    defaults: { _controller: TargetBundle:Client:manage }
+#    requirements:
+#        clientId: \d+
+#
+## DELETE
+#client.delete:
+#    path:     /client/delete/{clientId}
+#    defaults: { _controller: TargetBundle:Client:delete }
+#    requirements:
+#        clientId: \d+
+#
+## ALL
+#token.all:
+#    path:     /token
+#    defaults: { _controller: TargetBundle:Token:token }
+#
+## CREATE
+#token.create:
+#    path:     /token/create
+#    defaults: { _controller: TargetBundle:Token:create }
+#
+## MANAGE
+#token.manage:
+#    path:     /token/manage/{tokenId}
+#    defaults: { _controller: TargetBundle:Token:manage }
+#    requirements:
+#        tokenId: \d+
+#
+## DELETE
+#token.delete:
+#    path:     /token/delete/{tokenId}
+#    defaults: { _controller: TargetBundle:Token:delete }
+#    requirements:
+#        tokenId: \d+
+#
+#method.all:
+#    path:     /method
+#    defaults: { _controller: TargetBundle:Method:method }
+#
+## CREATE
+#method.create:
+#    path:     /method/create
+#    defaults: { _controller: TargetBundle:Method:create }
+#
+## MANAGE
+#method.manage:
+#    path:     /method/manage/{methodId}
+#    defaults: { _controller: TargetBundle:Method:manage }
+#    requirements:
+#        methodId: \d+
+#
+## DELETE
+#method.delete:
+#    path:     /method/delete/{methodId}
+#    defaults: { _controller: TargetBundle:Method:delete }
+#    requirements:
+#        methodId: \d+
+#
+## ALL
+#httpMethod.all:
+#    path:     /httpMethod
+#    defaults: { _controller: TargetBundle:HttpMethod:httpMethod }
+#
+## CREATE
+#httpMethod.create:
+#    path:     /httpMethod/create
+#    defaults: { _controller: TargetBundle:HttpMethod:create }
+#
+## MANAGE
+#httpMethod.manage:
+#    path:     /httpMethod/manage/{httpMethodId}
+#    defaults: { _controller: TargetBundle:HttpMethod:manage }
+#    requirements:
+#        methodId: \d+
+#
+## DELETE
+#httpMethod.delete:
+#    path:     /httpMethod/delete/{httpMethodId}
+#    defaults: { _controller: TargetBundle:HttpMethod:delete }
+#    requirements:
+#        methodId: \d+

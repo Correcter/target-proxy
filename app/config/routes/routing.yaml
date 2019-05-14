@@ -1,0 +1,11 @@
+userbundle:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+targetbundle:
+    resource: "@TargetBundle/Resources/config/routing.yml"
+    prefix:   /
+
+proxybundle:
+    resource: "@ProxyBundle/Resources/config/routing.yml"
+    prefix:   /

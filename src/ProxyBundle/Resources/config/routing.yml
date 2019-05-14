@@ -1,0 +1,5 @@
+proxy:
+    path:     /{path}
+    defaults: { _controller: ProxyBundle:Proxy:proxy, path: "" }
+    requirements:
+        path: .*

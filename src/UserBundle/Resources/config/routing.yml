@@ -1,0 +1,7 @@
+me:
+    path:     /me
+    defaults: { _controller: UserBundle:Me:me }
+
+registratura:
+    path:     /RClientsNet
+    defaults: { _controller: UserBundle:Me:RClientsNet }

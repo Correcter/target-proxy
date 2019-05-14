@@ -1,0 +1,65 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+                            # fetching services directly from the container via $container->get() won't work.
+                            # The best practice is to be explicit about your dependencies anyway.
+
+    target.tokenizer.client.api.params:
+        class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+        arguments:
+            $parameters:
+                deleteTokenUrl: "%tm_delete_token_url%"
+                getTokenUrl: "%tm_get_token_url%"
+                clientHost: "%tm_host%"
+                maxTokensCount: "%tm_max_tokens_count%"
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    target.client.api:
+        class: TargetBundle\Service\TargetClientApi
+        arguments: ["%tm_host%"]
+
+    target.tokenizer.client.api:
+        class: TargetBundle\Service\TargetTokenApi
+        arguments:
+            - "@target.tokenizer.client.api.params"
+
+    target.log.manager:
+        class: TargetBundle\Service\TargetLogManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+
+    target.token.manager:
+        class: TargetBundle\Service\TargetTokenManager
+        arguments:
+            - "@doctrine.orm.entity_manager"
+            - "@target.tokenizer.client.api"
+
+    TargetBundle\EventListener\ProxyCheckerListener:
+        arguments:
+            - "@target.tokenizer.client.api.params"
+            - "@doctrine.orm.entity_manager"
+            - "@security.token_storage"
+            - "@target.token.manager"
+        tags:
+            - { name: kernel.event_listener, event: "check.uri"}
+            - { name: kernel.event_listener, event: "check.proxy.type"}
+            - { name: kernel.event_listener, event: "agency.and.client.is.received"}
+            - { name: kernel.event_listener, event: "setup.credentials"}
+            - { name: kernel.event_listener, event: "create.user.if.not.exists"}
+            - { name: kernel.event_listener, event: "check.token"}
+            - { name: kernel.event_listener, event: "check.http.method"}
+            - { name: kernel.event_listener, event: "check.access.methods"}
+            - { name: kernel.event_listener, event: "check.company"}
+
+    TargetBundle\EventListener\ProxyRequestListener:
+        arguments:
+            - "@target.client.api"
+            - "@doctrine.orm.entity_manager"
+            - "@target.token.manager"
+            - "@target.log.manager"
+        tags:
+            - { name: kernel.event_listener, event: "proxy.request"}

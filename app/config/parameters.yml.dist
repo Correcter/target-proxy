@@ -1,0 +1,16 @@
+parameters:
+    locale: ru
+    secret:            1cff313fe2c7ea760869c89ead447314
+    database_host:     icontextdev.ru
+    database_port:     3306
+    database_name:     proxy
+    database_user:     proxy
+    database_password: XOHd8CRZaw7d5RZq
+    tm_host: "https://target.my.com"
+    tm_get_token_url: "/api/v2/oauth2/token.json"
+    tm_delete_token_url: "/api/v2/oauth2/token/delete.json"
+    tm_max_tokens_count: 5
+    registratura_token: f45e88bf67bac264ab7a70892069feee
+    loreal_token: 8a29a88c58d95c39b553da732cd9fcb4
+    test_company_token: 5a4489de5189844cc698b9d298980798
+    global_token: 2fcdbb5240ab6c3885a7b83615ed5db5

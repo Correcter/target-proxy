@@ -1,0 +1,263 @@
+html {
+    background-color: #333;
+}
+
+body {
+    position: relative;
+    background-color: #fff;
+    width: 85%;
+    margin: 0 auto;
+    border-radius:5px;
+}
+
+#navigation {
+    display:inline-block;
+    padding:50px;
+    margin:5px;
+    border-radius: 5px;
+    border: 1px solid #cacece;
+}
+
+#navigation li {
+    list-style: none;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+#navigation li a, .to_create p a, .to_common_list p a {
+    content: "<<";
+    font-family: Arial, Helvetica, sans-serif;
+    color: cornflowerblue;
+    text-decoration: none;
+}
+
+#navigation li a:hover {
+    color:#1abc9c;
+}
+
+.to_create {
+    margin: 0 40px;
+    padding: 20px;
+}
+
+.to_common_list {
+    margin-left: 20px;
+}
+
+.form-style-5 label.required:before {
+    content: "* ";
+    color:red;
+}
+
+/* Form chackboxes */
+.form-style-5 .regular-checkbox {
+    top:10px;
+    left:5px;
+    -webkit-appearance: none;
+    background-color: #fafafa;
+    border: 1px solid #cacece;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+    padding: 9px;
+    border-radius: 3px;
+    display: inline-block;
+    position: relative;
+}
+
+.form-style-5 .regular-checkbox:checked:after {
+    content: '\2714';
+    font-size: 29px;
+    position: absolute;
+    top: 0;
+    left: 3px;
+    color: #1abc9c;
+}
+
+.form-style-5 .big-checkbox {
+    padding: 12px;
+}
+
+.form-style-5 .big-checkbox:checked:after {
+    font-size: 20px;
+    left: 4px;
+    top:-1px;
+}
+
+
+.form-style-5 .regular-buton {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #1abc9c;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 50px 0;
+}
+
+.form-style-5 .regular-buton:hover {
+    background-color: #d2d9dd;
+    color: white;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.24), 0 2px 2px 0 rgba(0,0,0,0.19);
+}
+
+/* Form checkboxes end */
+.form-style-5 {
+    max-width: 500px;
+    background: #f4f7f8;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.form-style-5 .form-style-5 fieldset{
+    border: none;
+}
+
+.form-style-5 .form-style-5 legend {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.form-style-5 .form-style-5 label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Tooltip Start */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip a span.tooltiptext {
+    visibility: hidden;
+    width: 5px;
+    background-color: #fff;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    right:0;
+    top:0;
+    position: absolute;
+    z-index: 10;
+}
+
+.tooltip:hover a span.tooltiptext {
+    visibility: visible;
+}
+
+a span.tooltiptext:before {
+    content: 'x';
+    color: #cc0000;
+    font-weight: 300;
+    font-family: Arial, sans-serif;
+}
+
+/* Tooltip End */
+
+.form-style-5 input[type="text"],
+.form-style-5 input[type="date"],
+.form-style-5 input[type="datetime"],
+.form-style-5 input[type="email"],
+.form-style-5 input[type="number"],
+.form-style-5 input[type="search"],
+.form-style-5 input[type="time"],
+.form-style-5 input[type="url"],
+.form-style-5 textarea,
+.form-style-5 select {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: #e8eeef;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+}
+
+.form-style-5 input[type="text"]:focus,
+.form-style-5 input[type="date"]:focus,
+.form-style-5 input[type="datetime"]:focus,
+.form-style-5 input[type="email"]:focus,
+.form-style-5 input[type="number"]:focus,
+.form-style-5 input[type="search"]:focus,
+.form-style-5 input[type="time"]:focus,
+.form-style-5 input[type="url"]:focus,
+.form-style-5 textarea:focus,
+.form-style-5 select:focus{
+    background: #d2d9dd;
+}
+.form-style-5 select{
+    -webkit-appearance: menulist-button;
+    height:35px;
+}
+.form-style-5 .number {
+    background: #1abc9c;
+    color: #fff;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-right: 4px;
+    line-height: 30px;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+    border-radius: 15px 15px 15px 0px;
+}
+
+.form-style-5 input[type="submit"],
+.form-style-5 input[type="button"]
+{
+    position: relative;
+    display: block;
+    padding: 19px 39px 18px 39px;
+    color: #FFF;
+    margin: 0 auto;
+    background: #1abc9c;
+    font-size: 18px;
+    text-align: center;
+    font-style: normal;
+    width: 100%;
+    border: 1px solid #16a085;
+    border-width: 1px 1px 3px;
+    margin-bottom: 10px;
+}
+
+.form-style-5 input[type="submit"]:hover,
+.form-style-5 input[type="button"]:hover
+{
+    background: #109177;
+}
+
+#list a li {
+    display:inline-block;
+    padding:5px;
+    margin:10px 50px;
+    font-size: 15px;
+    line-height: 20px;
+    list-style:none;
+    text-align: center;
+    border:1px solid #cccccc;
+    border-radius: 10px;
+}
+
+#list a {
+    text-decoration: none;
+    color:#109177;
+    font-weight:bold;
+}

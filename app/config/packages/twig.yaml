@@ -1,0 +1,15 @@
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        title: "Панель администрирования"
+        deleteError: "Ошибка удаления записи"
+        navigation:
+            token: { href: "/token", caption: "Токены" }
+            company: { href: "/company", caption: "Компании" }
+            agency: { href: "/agency", caption: "Клиенты" }
+            clients: { href: "/client", caption: "Агентства" }
+            methods: { href: "/method", caption: "Методы доступа к Target Mail" }
+            httpmethods: { href: "/httpMethod", caption: "HTTP методы" }
+    paths: ['%kernel.project_dir%/templates']

@@ -1,0 +1,43 @@
+#parameters:
+#    api_users:
+#        loreal: token
+#        sberbank: token2
+#    allowed_methods:
+#        loreal:
+#            - campaigns
+#            - '*'
+#    target_users:
+#        loreal:
+#            dWesGENrjZBV8GCF:
+#                - "026d3dc4e5@agency_client"
+#                - "002a0438d8@agency_client"
+#                - "K-KM-shop.vichy"
+#                - "Decleor_RU_ICONTEXT_OA"
+#                - "Kerastase_RU_ICONTEXT_OA"
+#                - "Loreal-Prof_RU_ICONTEXT_OA"
+#                - "REDKEN_RU_ICONTEXT_OA"
+#                - "CARITA_RU_ICONTEXT_OA"
+#                - "LANCOME_RU_ICONTEXT_OA"
+#                - "URBAN-DECAY_RU_ICONTEXT_OA"
+#                - "LOREAL-LUX_RU_ICONTEXT_OA"
+#                - "La-Roche-Posay_RU_ICONTEXT_OA"
+#                - "NYX_RU_ICONTEXT_OA"
+#                - "ARMANI_RU_ICONTEXT_OA"
+#                - "YSL_RU_ICONTEXT_OA"
+#                - "Biotherm_RU_ICONTEXT_OA"
+#                - "Loreal Paris_RU_iContext_OA"
+#                - "Kiehl's_RU_ICONTEXT_OA"
+#                - "Clarisonic_RU_ICONTEXT_OA"
+#                - "K-AP-Loreal-Matrix-Mobile"
+#                - "MATRIX_RU_ICONTEXT_OA"
+#                - "SkinCeuticals_RU_ICONTEXT_OA"
+#            DKqoROWlQ5imHHqd:
+#                - "040dddf289@agency_client"
+#            h9nXgGJ5uREwpWpr:
+#                - "040dddf289@agency_client"
+#            Wnvr7MDHULzs6wl2:
+#                - "040dddf289@agency_client"
+#            xbansWQOMq4qCDp1:
+#                - "040dddf289@agency_client"
+#            xbIcOZwIxUP23LWN:
+#                - "040dddf289@agency_client"
