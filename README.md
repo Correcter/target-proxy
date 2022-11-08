@@ -1,25 +1,25 @@
-#### Прокси для работы с target.my.com
+#### Proxy for working with target.my.com
 
-##### Приложение представляет собой проксирующий однопоточный шлюз, для перенаправления запросов на сторонние сервисы.
+##### The application is a proxying single-threaded gateway for redirecting requests to third-party services.
 
-### Принцип взаимодействия:
-- Прокси находится по адресу: **http://target-proxy.icontext.ru/**;
-- URI вызовы необходимо указывать непосредственно после адреса: **http://target-proxy.icontext.ru...**, с добавлением нижеследующих параметров;
-- Для аутентификации запросов в прокси-сервер, используются заголовок **Authorization:** Bearer token, генерируемый на сервере **JWT токенов**, в соответствии с правами пользователя прокси сервером;
-- Каждый клиентский запрос должен содержать обязательные  параметры: **GET/POST**: ``client`` или **HEAD** ``X-TARGET-CLIENT``  И  **GET/POST**: ``agency`` или **HEAD** ``X-TARGET-AGENCY``  (прим. **?agency=...&client=...** );
-- Для запроса к методам **АГЕНТСТВА**, нужны папаметры: **GET/POST**: ``agency`` или **HEAD** ``X-TARGET-AGENCY``
-- Прокси принимает все основыне типы HTTP запросов: **GET**, **POST**, **PUT**, **DELETE**;
-- Формат запрос/ответ - **json**
+### The principle of interaction:
+- The proxy is located at: **http://target-proxy.icontext.ru/**;
+- URI calls must be specified directly after the address: **http://target-proxy.icontext.ru ...**, with the addition of the following parameters;
+- To authenticate requests to the proxy server, the header **Authorization:** Bearer token generated on the server **JWT tokens** is used, in accordance with the user rights of the proxy server;
+- Each client request must contain the required parameters: **GET/POST**: `client` or **HEAD** `X-TARGET-CLIENT` And **GET/POST**: `agency` or **HEAD** `X-TARGET-AGENCY" (approx. **?agency=...&client=...** );
+- To request the **AGENCY** methods, you need papameters: **GET/POST**: `agency` or **HEAD** `X-TARGET-AGENCY`
+- Proxy accepts all basic types of HTTP requests: **GET**, **POST**, **PUT**, **DELETE**;
+- Request/response format - **json**
 
 
-#### Пример запроса для агентства:
+#### Example of a request for an agency:
 
 GET/POST/DELETE /api/v2/campaigns.json HTTP/1.1 \
 Host: target-proxy.icontext.ru \
 token: {proxy_token} \
 agency: {agency_name} \
 
-#### Пример запроса для клиента:
+#### Example of a request for a client:
 
 GET/POST/DELETE /api/v2/campaigns.json HTTP/1.1 \
 Host: target-proxy.icontext.ru \
@@ -29,7 +29,7 @@ agency: {agency_name}
 
 **http://target-proxy.icontext.ru/api/v2/campaigns.json?token=token&client=client_name**
 
-**Пример ответа, в случае успешного выполнения**
+**Sample response, if successful**
 
 HTTP/1.1 200 OK \
 Content-Type: application/json; charset=UTF-8
@@ -40,23 +40,23 @@ Content-Type: application/json; charset=UTF-8
       {  
           package_id: 23,
           id: 3784532,
-          name: "cat_sumki2_60,61,62,63,64_Красота и уход за собой"
+          name: "cat_sumki2_60,61,62,63,64_ Beauty and self-care"
       },
       {
-          package_id: 23,
-          id: 3784533,
-          name: "cat_sumki2_40,41,42,43,44_Одежда, обувь и аксессуары"
+package_id: 23,
+id: 3784533,
+name: "cat_sumki2_40,41,42,43,44_wear, shoes and accessories"
       },
       {
-          package_id: 23,
-          id: 3784534,
-          name: "cat_sumki2_45,46,47,48,49_Одежда, обувь и аксессуары"
+package_id: 23,
+id: 3784534,
+name: "cat_sumki2_45,46,47,48,49_wear, shoes and accessories"
       },
  ```
  
- **Возможные ошибки запросов к прокси:**
-  
-  - Если вы не указали под каким клиентом (**?client=**) хотите обращаться к прокси-серверу, вы получите ошибку вида: 
+ **Possible proxy request errors:**
+
+- If you have not specified under which client (**?client=**) you want to access the proxy server, you will receive an error like: 
     ``` HTTP/1.1 403 HTTP FORBIDDEN```
     ```json 
     {
@@ -64,23 +64,23 @@ Content-Type: application/json; charset=UTF-8
     }
     ```
   
-  - В случае, если вы не указали метод (**/api/v2/method.json**), получите ошибку:
-    ``` HTTP/1.1 403 HTTP FORBIDDEN```
+  - In case you didn't specify the method (**/api/v2/method.json**), get the error:
+`` HTTP/1.1 403 HTTP FORBIDDEN``
     ```json 
     {
         error: "Method is not defined!"
     }
-    ```
-  - Политика доступа к методам сервиса через прокси, предполагает наличие разрешенных 
-    и запрещенных методов на каждый токен клиента. В случае отсутствия у вас доступа, будет ошибка:
+    ``
+- The policy of access to the methods of the service through a proxy, assumes the presence of allowed 
+    and prohibited methods for each client token. If you do not have access, there will be an error:
     ``` HTTP/1.1 403 HTTP FORBIDDEN```
     ```json 
       {
           error: "Method is not allowed!"
       }
     ```  
-  - Прокси-сервер предполагает последовательную обработку ответов от запрашиваемого сервиса, 
-    поэтому, не запрашивайте контент в несколько потоков. Иначе, вы получите ошибку:
+  - The proxy server assumes sequential processing of responses from the requested service,
+therefore, do not request content in multiple streams. Otherwise, you will get an error:
     
     ``` HTTP/1.1 429 TOO MANY REQUESTS```
     ```json 
@@ -89,18 +89,18 @@ Content-Type: application/json; charset=UTF-8
       }
     ```
 
-    **Ошибки при работе с запрашиваемыми ресурсами:**
+    **Errors when working with the requested resources:**
     
-  - Если не удалось получить авторизационные данные, для запросов в указанный вами сервис, вы получите одну из ошибок:
-  
-    ``` HTTP/1.1 403 HTTP NOT FOUND``` 
+  - If authorization data could not be obtained for requests to the service you specified, you will receive one of the errors:
+
+`` HTTP/1.1 403 HTTP NOT FOUND`` 
     ```json 
       {
           error: "An error occurred during the tokenizer request!"
       }
     ```
     
-     **или**
+     **or**
    
     ``` HTTP/1.1 204 HTTP NO CONTENT``` 
     ```json 
@@ -109,7 +109,7 @@ Content-Type: application/json; charset=UTF-8
          }
     ```
 
-     **или**
+     **or**
     
     ``` HTTP/1.1 204 HTTP NO CONTENT``` 
     ```json 
@@ -117,7 +117,7 @@ Content-Type: application/json; charset=UTF-8
             error: "Tokenizer sents invalid json"
          }
     ```
-    **или**
+    **or**
         
     ``` HTTP/1.1 415 HTTP UNSUPPORTED MEDIA TYPE``` 
     ```json 
@@ -126,25 +126,25 @@ Content-Type: application/json; charset=UTF-8
          }
     ```
     
-   - Если прокси-серверу не удалось за отведенное время получить ответ от сервиса, то вы получите ошибку, 
-     которая может быть связана с неверными параметрами запроса (GET, POST, PUT, HEAD, DELETE):
+   - If the proxy server failed to receive a response from the service within the allotted time, then you will receive an error
+that may be associated with incorrect request parameters (GET, POST, PUT, HEAD, DELETE):
    
     ``` HTTP/1.1 504 HTTP GATEWAY TIMEOUT``` 
     ```json 
         {
              error: "The service is not responding"
         }    
-    ```
-   - Еще одна ошибка может быть получена, если вы неверно указали запрашиваемый метод или путь к АПИ сервиса: 
+    ``
+- Another error may be received if you incorrectly specified the requested method or path to the API of the service: 
     
     ``` HTTP/1.1 404 HTTP NOT FOUND``` 
     ```json 
         {
              error: "Invalid request path or method"
         }    
-    ```
- 
-   - Если запрашиваемые вами данные не отвечают ожидаемому ответу со стороны сервиса, вы получите ошибку: 
+    ``
+
+- If the data you are requesting does not meet the expected response from the service, you will receive an error: 
      
      ``` HTTP/1.1 400 HTTP BAD REQUEST``` 
      ```json 
@@ -153,7 +153,7 @@ Content-Type: application/json; charset=UTF-8
          }    
      ```
  
-#### Proxy позволяет получать access токен для регистратуры запросом следующего вида:
+#### Proxy allows you to get an access token for the registry with a request of the following type:
  
  **https://target-proxy.icontext.ru/RClientsNet?client_name=...&token=...**
  
@@ -163,4 +163,3 @@ Content-Type: application/json; charset=UTF-8
  client_name: {client_name}
  
  ...
- 
